@@ -14,28 +14,137 @@ st.set_page_config(
 # ---------- Theme / CSS ----------
 st.markdown("""
 <style>
-    .stApp { background: #f6f8fb; }
-    [data-testid="stSidebar"] { background: #111827; }
-    [data-testid="stSidebar"] * { color: #f9fafb !important; }
+
+    /* ================================
+       GLOBAL STREAMLIT THEME SUPPORT
+       ================================ */
+
+    .stApp {
+        background: var(--background-color);
+        color: var(--text-color);
+    }
+
+    /* ================================
+       SIDEBAR
+       ================================ */
+
+    [data-testid="stSidebar"] {
+        background: #111827;
+    }
+
+    /* Sidebar headings / labels */
+    [data-testid="stSidebar"] label,
+    [data-testid="stSidebar"] .stMarkdown,
+    [data-testid="stSidebar"] .stCaption {
+        color: #f9fafb !important;
+    }
+
+    /* IMPORTANT:
+       Date input has a white background,
+       therefore its text must be dark.
+    */
+    [data-testid="stSidebar"] [data-testid="stDateInput"] input {
+        color: #111827 !important;
+        background-color: #ffffff !important;
+        -webkit-text-fill-color: #111827 !important;
+    }
+
+    [data-testid="stSidebar"] [data-testid="stDateInput"] button {
+        color: #111827 !important;
+    }
+
+    /* Multiselect text */
+    [data-testid="stSidebar"] [data-baseweb="select"] {
+        background-color: #ffffff;
+    }
+
+    [data-testid="stSidebar"] [data-baseweb="select"] input {
+        color: #111827 !important;
+        -webkit-text-fill-color: #111827 !important;
+    }
+
+    /* ================================
+       HERO
+       ================================ */
+
     .hero {
         padding: 28px 30px;
         border-radius: 18px;
-        background: linear-gradient(135deg, #111827 0%, #1f2937 60%, #334155 100%);
+        background: linear-gradient(
+            135deg,
+            #111827 0%,
+            #1f2937 60%,
+            #334155 100%
+        );
         color: white;
         margin-bottom: 22px;
         box-shadow: 0 8px 25px rgba(15,23,42,.12);
     }
-    .hero h1 { margin: 0 0 8px 0; font-size: 34px; }
-    .hero p { margin: 0; color: #d1d5db; font-size: 15px; }
-    .section-title { font-size: 22px; font-weight: 700; color: #111827; margin: 20px 0 10px; }
-    .insight {
-        background: white; border-left: 4px solid #2563eb; padding: 14px 16px;
-        border-radius: 10px; margin: 8px 0; box-shadow: 0 2px 10px rgba(15,23,42,.05);
+
+    .hero h1 {
+        margin: 0 0 8px 0;
+        font-size: 34px;
+        color: white;
     }
+
+    .hero p {
+        margin: 0;
+        color: #d1d5db;
+        font-size: 15px;
+    }
+
+    /* ================================
+       SECTION TITLES
+       ================================ */
+
+    .section-title {
+        font-size: 22px;
+        font-weight: 700;
+        color: var(--text-color);
+        margin: 20px 0 10px;
+    }
+
+    /* ================================
+       KPI CARDS
+       ================================ */
+
     div[data-testid="stMetric"] {
-        background: white; border-radius: 12px; padding: 12px 15px;
-        box-shadow: 0 2px 10px rgba(15,23,42,.06); border: 1px solid #e5e7eb;
+        background: var(--secondary-background-color);
+        border-radius: 12px;
+        padding: 12px 15px;
+        box-shadow: 0 2px 10px rgba(15,23,42,.06);
+        border: 1px solid var(--border-color);
     }
+
+    /* KPI label */
+    div[data-testid="stMetric"] label {
+        color: var(--text-color) !important;
+    }
+
+    /* KPI value */
+    div[data-testid="stMetric"] [data-testid="stMetricValue"] {
+        color: var(--text-color) !important;
+    }
+
+    /* KPI delta */
+    div[data-testid="stMetric"] [data-testid="stMetricDelta"] {
+        color: var(--text-color) !important;
+    }
+
+    /* ================================
+       INSIGHT CARDS
+       ================================ */
+
+    .insight {
+        background: var(--secondary-background-color);
+        color: var(--text-color);
+        border-left: 4px solid #2563eb;
+        padding: 14px 16px;
+        border-radius: 10px;
+        margin: 8px 0;
+        box-shadow: 0 2px 10px rgba(15,23,42,.05);
+    }
+
 </style>
 """, unsafe_allow_html=True)
 
